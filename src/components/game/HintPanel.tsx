@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { Lightbulb, ChevronRight, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from "framer-motion";
+import { Lightbulb, ChevronRight, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface HintPanelProps {
   hints: string[];
@@ -10,7 +10,13 @@ interface HintPanelProps {
   onNext: () => void;
 }
 
-export function HintPanel({ hints, currentIndex, isVisible, onClose, onNext }: HintPanelProps) {
+export function HintPanel({
+  hints,
+  currentIndex,
+  isVisible,
+  onClose,
+  onNext,
+}: HintPanelProps) {
   return (
     <AnimatePresence>
       {isVisible && (

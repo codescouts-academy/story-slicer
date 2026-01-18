@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { ChevronLeft, Lightbulb, Send, HelpCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Level, slicingPatterns } from '@/data/gameData';
-import { CreatedStory } from '@/hooks/useGameState';
-import { EpicCard } from '@/components/game/EpicCard';
-import { PatternBadge } from '@/components/game/PatternBadge';
-import { StoryCard } from '@/components/game/StoryCard';
-import { StoryCreator } from '@/components/game/StoryCreator';
-import { HintPanel } from '@/components/game/HintPanel';
+import { motion } from "framer-motion";
+import { ChevronLeft, Lightbulb, Send, HelpCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Level, slicingPatterns } from "@/data/gameData";
+import { CreatedStory } from "@/hooks/useGameState";
+import { EpicCard } from "@/components/game/EpicCard";
+import { PatternBadge } from "@/components/game/PatternBadge";
+import { StoryCard } from "@/components/game/StoryCard";
+import { StoryCreator } from "@/components/game/StoryCreator";
+import { HintPanel } from "@/components/game/HintPanel";
 
 interface GameScreenProps {
   level: Level;
@@ -15,7 +15,11 @@ interface GameScreenProps {
   showHint: boolean;
   currentHintIndex: number;
   onBack: () => void;
-  onAddStory: (story: { role: string; action: string; benefit: string }) => void;
+  onAddStory: (story: {
+    role: string;
+    action: string;
+    benefit: string;
+  }) => void;
   onRemoveStory: (id: string) => void;
   onUseHint: () => void;
   onSubmit: () => void;
@@ -41,13 +45,19 @@ export function GameScreen({
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b p-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Button variant="ghost" onClick={onBack} className="text-muted-foreground">
+          <Button
+            variant="ghost"
+            onClick={onBack}
+            className="text-muted-foreground"
+          >
             <ChevronLeft className="w-5 h-5 mr-1" />
             Salir
           </Button>
 
           <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-muted-foreground">Nivel {level.id}:</span>
+            <span className="text-sm font-medium text-muted-foreground">
+              Nivel {level.id}:
+            </span>
             <span className="font-display font-bold">{level.name}</span>
           </div>
 
@@ -56,7 +66,7 @@ export function GameScreen({
               variant="outline"
               size="sm"
               onClick={onUseHint}
-              className="text-warning border-warning/30 hover:bg-warning/10"
+              className="text-warning border-warning/30 hover:bg-warning/20 hover:text-warning"
             >
               <Lightbulb className="w-4 h-4 mr-2" />
               Pista
@@ -91,8 +101,12 @@ export function GameScreen({
             {/* Expected count hint */}
             <div className="p-4 bg-muted/50 rounded-xl">
               <p className="text-sm text-muted-foreground">
-                💡 <span className="font-medium">Sugerencia:</span> Esta épica puede dividirse en aproximadamente{' '}
-                <span className="font-bold text-foreground">{level.expectedStories.length}</span> historias de usuario.
+                💡 <span className="font-medium">Sugerencia:</span> Esta épica
+                puede dividirse en aproximadamente{" "}
+                <span className="font-bold text-foreground">
+                  {level.expectedStories.length}
+                </span>{" "}
+                historias de usuario.
               </p>
             </div>
           </div>
